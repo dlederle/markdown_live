@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :markdown_live,
-  ecto_repos: [MarkdownLive.Repo]
-
 # Configures the endpoint
 config :markdown_live, MarkdownLiveWeb.Endpoint,
   url: [host: "localhost"],

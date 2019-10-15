@@ -9,7 +9,7 @@ defmodule MarkdownLive.Application do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      MarkdownLive.Repo,
+      # MarkdownLive.Repo,
       # Start the endpoint when the application starts
       MarkdownLiveWeb.Endpoint
       # Starts a worker by calling: MarkdownLive.Worker.start_link(arg)
