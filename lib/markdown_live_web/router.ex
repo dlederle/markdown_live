@@ -1,10 +1,12 @@
 defmodule MarkdownLiveWeb.Router do
   use MarkdownLiveWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -16,7 +18,7 @@ defmodule MarkdownLiveWeb.Router do
   scope "/", MarkdownLiveWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :editor
   end
 
   # Other scopes may use custom stacks.

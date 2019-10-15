@@ -1,7 +1,10 @@
 defmodule MarkdownLiveWeb.PageController do
+  import Phoenix.LiveView.Controller
+
   use MarkdownLiveWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+  def editor(conn, _params) do
+    conn
+    |> live_render(MarkdownLiveWeb.Editor, session: %{})
   end
 end

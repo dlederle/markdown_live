@@ -24,14 +24,4 @@ defmodule MarkdownLiveWeb.ChannelCase do
       @endpoint MarkdownLiveWeb.Endpoint
     end
   end
-
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MarkdownLive.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MarkdownLive.Repo, {:shared, self()})
-    end
-
-    :ok
-  end
 end

@@ -25,14 +25,4 @@ defmodule MarkdownLiveWeb.ConnCase do
       @endpoint MarkdownLiveWeb.Endpoint
     end
   end
-
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MarkdownLive.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MarkdownLive.Repo, {:shared, self()})
-    end
-
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
-  end
 end
