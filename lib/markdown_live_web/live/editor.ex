@@ -5,13 +5,14 @@ defmodule MarkdownLiveWeb.Editor do
 
   def render(assigns) do
     ~L"""
-    <h1>Markdown Live Editor</h1>
-    <form phx-change="update">
-      <textarea><%= @raw %></textarea>
-    </form>
     <div>
-      <h1>Rendered Output</h1>
-      <%= raw(@rendered) %>
+      <h1>Markdown Live Editor</h1>
+      <textarea name="body" phx-keyup="update"><%= @raw %></textarea>
+      <div>
+        <h1>Rendered Output</h1>
+        <%= raw(@rendered) %>
+      </div>
+    </div>
     """
   end
 
@@ -19,7 +20,7 @@ defmodule MarkdownLiveWeb.Editor do
     {:ok, assign(socket, %{raw: "", rendered: ""})}
   end
 
-  def handle_event("update", state, %{assigns: %{raw: raw}} = socket) do
+  def handle_event("update", %{"value" => raw} = body, socket) do
     {:ok, rendered_html} = Post.render(raw)
     {:noreply, assign(socket, rendered: rendered_html)}
   end

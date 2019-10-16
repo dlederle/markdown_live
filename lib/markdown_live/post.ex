@@ -3,6 +3,6 @@ defmodule MarkdownLive.Post do
 
   # render/1
   def render(body) do
-    {:ok, "<h1>From within Post</h1>"}
+    {:ok, Earmark.as_html!(body)}
   end
 end
