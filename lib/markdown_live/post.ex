@@ -3,6 +3,14 @@ defmodule MarkdownLive.Post do
 
   # render/1
   def render(body) do
-    {:ok, Earmark.as_html!(body)}
+    rendered =
+      body
+      |> Panpipe.to_html()
+
+    {:ok, rendered}
   end
+
+  # def render(file) do
+  #   Panpipe.pandoc(input: file)
+  # end
 end
