@@ -14,8 +14,16 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live", Socket)
+// let liveSocket = new LiveSocket("/live", Socket)
+const session_uuid = document.getElementById("editor").dataset.sessionUuid
+const liveSocket = new LiveSocket("/live", Socket, {params: {session_uuid: session_uuid}})
 liveSocket.connect()
+
+// If we're on the post show page
+// Get the postID
+const postId = "abcd"
+let channel = liveSocket.channel("post:" + postId, {})
+channel.join() 
 
 // Import local files
 //

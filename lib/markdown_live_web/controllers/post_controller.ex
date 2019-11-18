@@ -25,8 +25,10 @@ defmodule MarkdownLiveWeb.PostController do
 
 
   def show(conn, %{"id" => id}) do
+    # TODO: start post server lol
+    uuid = :rand.uniform(10000) |> to_string
     conn
-    |> live_render(MarkdownLiveWeb.Editor, session: %{id: id})
+    |> live_render(MarkdownLiveWeb.Editor, session: %{id: id, session_uuid: uuid})
   end
 end
 

@@ -5,7 +5,8 @@ defmodule MarkdownLiveWeb.Endpoint do
     websocket: true,
     longpoll: false
 
-  socket "/live", Phoenix.LiveView.Socket
+  #socket "/live", Phoenix.LiveView.Socket
+  socket "/live", MarkdownLiveWeb.LiveSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

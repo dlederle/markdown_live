@@ -12,7 +12,8 @@ defmodule MarkdownLive.Application do
       # MarkdownLive.Repo,
       # Start the endpoint when the application starts
       MarkdownLiveWeb.Endpoint,
-      MarkdownLive.PostSupervisor
+      MarkdownLive.PostSupervisor,
+      {Registry, [keys: :unique, name: Registry.SessionRegistry]}
       # Starts a worker by calling: MarkdownLive.Worker.start_link(arg)
       # {MarkdownLive.Worker, arg},
     ]
