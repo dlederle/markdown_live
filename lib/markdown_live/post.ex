@@ -1,5 +1,5 @@
 defmodule MarkdownLive.Post do
-  # defstruct %Post{body: body}
+  # defstruct %Post{raw: raw, rendered: rendered}
 
   # render/1
   def render(body) do

@@ -11,7 +11,8 @@ defmodule MarkdownLive.Application do
       # Start the Ecto repository
       # MarkdownLive.Repo,
       # Start the endpoint when the application starts
-      MarkdownLiveWeb.Endpoint
+      MarkdownLiveWeb.Endpoint,
+      MarkdownLive.PostSupervisor
       # Starts a worker by calling: MarkdownLive.Worker.start_link(arg)
       # {MarkdownLive.Worker, arg},
     ]

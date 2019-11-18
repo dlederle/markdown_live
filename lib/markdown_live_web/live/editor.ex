@@ -1,7 +1,7 @@
 defmodule MarkdownLiveWeb.Editor do
   use Phoenix.LiveView
   use Phoenix.HTML
-  alias MarkdownLive.Post
+  alias MarkdownLive.PostServer
 
   def render(assigns) do
     ~L"""
@@ -16,12 +16,16 @@ defmodule MarkdownLiveWeb.Editor do
     """
   end
 
-  def mount(_sesson, socket) do
-    {:ok, assign(socket, %{raw: "", rendered: ""})}
+  def mount(%{id: id}, socket) do
+    # Connect to Post by id
+    post = PostServer.summary(id)
+
+    {:ok, assign(socket, post)}
   end
 
   def handle_event("update", %{"value" => raw} = body, socket) do
-    {:ok, rendered_html} = Post.render(raw)
+    id = "whatnow"
+    %{rendered: rendered_html} = PostServer.update(id, %{raw: raw})
     {:noreply, assign(socket, rendered: rendered_html)}
   end
 end

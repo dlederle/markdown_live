@@ -18,7 +18,8 @@ defmodule MarkdownLiveWeb.Router do
   scope "/", MarkdownLiveWeb do
     pipe_through :browser
 
-    get "/", PageController, :editor
+    get "/", PostController, :new
+    resources "/posts", PostController, only: [:new, :show]
   end
 
   # Other scopes may use custom stacks.
