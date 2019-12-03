@@ -7,7 +7,9 @@ defmodule MarkdownLiveWeb.Editor do
     ~L"""
     <div>
       <h1>Markdown Live Editor</h1>
-      <textarea name="body" phx-keyup="update"><%= @raw %></textarea>
+      <div contenteditable="true" class="editor" name="body" phx-hook="ForwardInputEvent">
+        <%= @raw %>
+      </div>
       <div>
         <h1>Rendered Output</h1>
         <%= raw(@rendered) %>
@@ -27,7 +29,7 @@ defmodule MarkdownLiveWeb.Editor do
     :ok = Phoenix.PubSub.broadcast(MarkdownLive.PubSub, post_id, :update)
     {:noreply, assign_post(socket)}
   end
-  
+
   def handle_info(:update, socket) do
     {:noreply, assign_post(socket)}
   end

@@ -14,7 +14,17 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live", Socket)
+let Hooks = {};
+Hooks.ForwardInputEvent = {
+  mounted() {
+    this.el.addEventListener("input", e => {
+      let text = this.el.innerText
+      this.pushEvent("update", { value: text })
+    })
+  },
+}
+
+let liveSocket = new LiveSocket("/live", Socket, { hooks: Hooks })
 liveSocket.connect()
 
 // Import local files

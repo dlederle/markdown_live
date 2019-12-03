@@ -1,3 +1,10 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+
+.editor {
+  background-color: antiquewhite;
+  height: 500px;
+  width: 100%;
+  white-space: pre;
+}
